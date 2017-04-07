@@ -44,11 +44,12 @@ export const app_config={
               iconfont: '&#xe67b;',
               title: '购物车',
               url: '/cart'
-            }, {
-              iconfont: '&#xe657;',
-              title: '活动广场',
-              url: '/activity'
-            }
+            }, 
+            // {
+            //   iconfont: '&#xe657;',
+            //   title: '活动广场',
+            //   url: '/activity'
+            // }
         ],
         conf: {}
   }

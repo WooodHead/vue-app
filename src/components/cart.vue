@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="cart content">
-        <swipeout v-for="item in 5">
+        <swipeout v-for="(item,index) in data_list" class="border-1px-b">
           <swipeout-item @on-close="handleEvents('on-close')" @on-open="handleEvents('on-open')" transition-mode="follow" :right-menu-width="80">
             <div slot="right-menu">
               <swipeout-button @click="handle_delete($event)" type="warn">
@@ -8,11 +8,11 @@
               </swipeout-button>
             </div>
             <div slot="content">
-                <panel-cart></panel-cart>
+                <panel-cart :cart_data="item"></panel-cart>
             </div>
           </swipeout-item>
         </swipeout>
-        <flexbox :gutter="0" wrap="nowrap" class="bar bar-secondary">
+        <flexbox :gutter="0" wrap="nowrap" class="bar bar-secondary border-1px-t" v-if="false">
           <flexbox-item :span="8/12" class="bar-item">
             <div class="padding-rl-10">
                 <span class="font-1x">合计:</span>
@@ -45,24 +45,31 @@ export default {
   data: function() {
     return {
       type: '1',
-      list: [{
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home',
-          num: '1',
-        },
+      data_list: [
         {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home'
-        },
-        {
-          src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
-          title: '标题一',
-          desc: 'YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882',
-          url: '/home'
+          name:"1800+FAD双频天线",
+          spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
+          spec_info1:'增益:11.5/11.5/12/13 dBi',
+          spec_info2:'电下倾:0/0/0 °',
+          s_url:'/static/grentech/201611071753107968.jpg'
+        },{
+          name:"基站大下倾宽频FAD电调智能天线",
+          spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
+          spec_info1:'增益:11.5/11.5/12/13 dBi',
+          spec_info2:'电下倾:0/0/0 °',
+          s_url:'/static/grentech/201611221355144218.jpg'
+        },{
+          name:"街道站低增益超宽频双通道（小型化)",
+          spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
+          spec_info1:'增益:11.5/11.5/12/13 dBi',
+          spec_info2:'电下倾:0/0/0 °',
+          s_url:'/static/grentech/201611071844501875.jpg'
+        },{
+          name:"基站定向双极化固定下倾角天线(小型化）",
+          spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
+          spec_info1:'增益:11.5/11.5/12/13 dBi',
+          spec_info2:'电下倾:0/0/0 °',
+          s_url:'/static/grentech/201611051243571562.jpg'
         }
       ]
     }

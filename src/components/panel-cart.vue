@@ -1,14 +1,20 @@
 <template lang="html">
   <flexbox class="panel-cart padding-tb-6">
     <flexbox-item class="item-media text-center link-img" :span="3/12">
-      <img src="http://mall.yingerfashion.com/public/images/30/75/7f/002cc761ab5a577585d67c853181b0630cc46057.jpg?1478140161#h" alt="">
+      <img :src="cart_data.s_url" alt="">
     </flexbox-item>
     <flexbox-item class="item-content":spam="9/12">
       <div class="item-title padding-rl-10">
-        YINER音儿2016春夏款/宝蓝钉珠长款真丝礼服连衣裙85605882
+        {{cart_data.name}}
       </div>
-      <div class="item-subtitle padding-rl-10">
-        颜色:红色/尺码:36
+      <div class="item-subtitle padding-rl-10 font-bold line-ellispse-2">
+        {{cart_data.spec_info}}
+      </div>
+      <div class="item-subtitle padding-rl-10 font-bold line-ellispse-2">
+        {{cart_data.spec_info1}}
+      </div>
+      <div class="item-subtitle padding-rl-10 font-bold line-ellispse-2">
+        {{cart_data.spec_info2}}
       </div>
       <div class="item-subtitle">
         <x-number :title="quantity" :min="1" :value="1" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
@@ -28,6 +34,9 @@ export default {
       min:1,
       max:10,
     }
+  },
+  props:{
+    cart_data:Object
   },
   components:{
     Flexbox,

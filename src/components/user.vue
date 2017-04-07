@@ -249,7 +249,7 @@ export default {
 
 .brand-info{
   position:absolute;
-  bottom:2rem;
+  bottom:1rem;
   left:0;
   width:100%;
 }

@@ -29,8 +29,8 @@
       <div class="padding-10 margin-tb-10 bg-white" @click="toggle_popup_show">
         <flexbox :gutter="0" wrap="nowrap">
           <flexbox-item :span="11">
-            <p>颜色: <span class="padding-rl-4 color-dark" v-for="(item,index) in color_arr">{{item}}</span></p>
-            <p>尺码: <span class="padding-rl-4 color-dark" v-for="(item,index) in size_arr">{{item}}</span></p>
+            <p>颜色: <span class="padding-rl-4 color-dark" v-for="(item,index) in color_arr">{{index}}</span></p>
+            <p>尺码: <span class="padding-rl-4 color-dark" v-for="(item,index) in size_arr">{{index}}</span></p>
           </flexbox-item>
           <flexbox-item :span="1">
             <span class="iconfont color-danger">&#xe65f;</span>
@@ -82,15 +82,15 @@
               颜色:
             </div>
             <div class="color-arr padding-b-10">
-             <x-button mini type="primary" style="margin-right:5px;" v-for="(item,index) in color_arr" plain>{{item}}</x-button>
+             <x-button mini type="primary" style="margin-right:5px;" v-for="(item,index) in color_arr" plain>{{index}}</x-button>
             </div>
       </div>
       <div class="font-normal padding-rl-10 border-1px-t">
             <div class="title font-normal padding-t-10">
               尺码:
             </div>
-            <div class="size-arr padding-b-10">
-             <x-button mini type="primary" style="margin-right:5px;" v-for="(item,index) in size_arr" plain>{{item}}</x-button>
+            <div class="size-arr padding-tb-10">
+             <x-button mini type="primary" style="margin-right:5px;" v-for="(item,index) in size_arr" plain>{{index}}</x-button>
             </div>
       </div>
       <div class="font-normal panel-cart padding-t-10 border-1px-t">
@@ -107,7 +107,7 @@
             <tabbar-item class="bg-primary">
               <span slot="label" class="color-white">加入购物车</span>
             </tabbar-item>
-             <tabbar-item class="bg-danger">
+             <tabbar-item class="bg-danger" v-if="false">
               <span slot="label" class="color-white">立即购买</span>
             </tabbar-item>
         </tabbar>
@@ -134,7 +134,8 @@ import api from '../api/index.js'
         index: 0,
         goods_id: 0,
         item_index: 0,
-        Root:window.location.host!="mall.yingerfashion.com"?"http://mall.yingerfashion.com/":'/',
+        //Root:window.location.host!="mall.yingerfashion.com"?"http://mall.yingerfashion.com/":'/',
+        Root:'/',
         page_goods_data: {},
         current_page: 0,
         temp_data:{},
@@ -143,8 +144,8 @@ import api from '../api/index.js'
         collapse3:true,
         collapse4:true,
         collapse5:true,
-        color_arr:["红色","白色","藏蓝","灰色","粉红","黄色","棕色"],
-        size_arr:["38","39","40","41","42","44"],
+        color_arr:{},
+        size_arr:{},
         list: [],
         options: {
           getThumbBoundsFn (index) {
@@ -339,7 +340,7 @@ import api from '../api/index.js'
                   "ident": "/fe/66/46/62349ab12b9079582f9e726c66de7784ee439be0.jpg",
                   "url": "public/images/fe/66/46/62349ab12b9079582f9e726c66de7784ee439be0.jpg",
                   "l_ident": "/69/a5/3a/1843a06a3f0329fcfd357c8477a8c2490b984532.jpg",
-                  "l_url": "public/images/69/a5/3a/1843a06a3f0329fcfd357c8477a8c2490b984532.jpg",
+                  "l_url": "static/grentech/201611071753107968.jpg",
                   "m_ident": "/de/b4/be/ec8ed0acb01951f25ca53fe2243aa2d09f559122.jpg",
                   "m_url": "public/images/de/b4/be/ec8ed0acb01951f25ca53fe2243aa2d09f559122.jpg",
                   "s_ident": "/03/71/16/dada49da46a64f0d5fae4495a943477d0818a360.jpg",
@@ -355,7 +356,7 @@ import api from '../api/index.js'
                   "goods_id": "10239",
                   "jooge_goods_id": "JOKZT22748867953",
                   "bn": "9097120130",
-                  "name": "INSUN恩裳2017年春裤子9097120130",
+                  "name": "基站定向双极化固定下倾角天线(小型化）",
                   "price": "1431.00",
                   "type_id": "2",
                   "cat_id": "6",
@@ -658,12 +659,33 @@ import api from '../api/index.js'
       handle_goods_data:function(product_data,goods_data){
         var self=this;
         // console.log(data);
-        console.log("________________________");
+        
         console.log(product_data);
         console.log(goods_data);
-        // for(var i=0;i<goods_data.length;i++){
-
-        // }
+        var size_arr={};
+        var color_arr={};
+        var temp_arr=[];
+        var total_store=0;
+        for(var i=0;i<product_data.length;i++){
+          var temp_obj=product_data[i].spec_desc.spec_value;
+          temp_obj.product_id=product_data[i].product_id;
+          temp_obj.goods_id=product_data[i].goods_id;
+          temp_obj.bn=product_data[i].bn;
+          temp_obj.price=product_data[i].price;
+          temp_obj.bn=product_data[i].bn;
+          temp_obj.store=product_data[i].store;
+          temp_arr.push(temp_obj);
+          (!!size_arr[temp_obj["1"]])?size_arr[temp_obj["1"]]++:size_arr[temp_obj["1"]]=1;
+          (!!color_arr[temp_obj["2"]])?color_arr[temp_obj["2"]]++:color_arr[temp_obj["2"]]=1;
+          total_store+=parseInt(product_data[i].store);
+        }
+        console.log("________________________");
+        console.log(temp_arr);
+        console.log(size_arr);
+        console.log(color_arr);
+        console.log(total_store);
+        this.size_arr=size_arr;
+        this.color_arr=color_arr;
         setTimeout(function(){
           self.show_previewer();
         },2000)
@@ -744,7 +766,7 @@ import api from '../api/index.js'
   line-height:2rem;
    position:absolute;
   top:-20px;
-  right:0;
+  right:5px;
   z-index:8888;
   box-shadow:0 0 10px #E53935;
 }

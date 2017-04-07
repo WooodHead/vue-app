@@ -35,7 +35,7 @@
             is_show: true,
             show_search_bar: false,
             navbar_active: 3,
-            hide_tabbar: true,
+            hide_tabbar: false,
           },
           'category': {
             title: '分类',
@@ -72,6 +72,14 @@
             is_show: true,
             show_search_bar: false,
             navbar_active: 2,
+          },
+          'order_confirm':{
+            title:'订单确认',
+            is_show:true,
+            show_back:false,
+            show_search_bar:false,
+            navbar_active:2,
+            hide_tabbar:true,
           },
           'goods': {
             title: '商品详情',
