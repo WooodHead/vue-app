@@ -22,6 +22,7 @@ import Test from 'components/test'
 import Vchart from 'components/vchart'
 import Jump from 'components/jump'
 import Loginout from 'components/loginout'
+import Pay from 'components/pay'
 
 
 Vue.use(Router)
@@ -88,6 +89,11 @@ export default new Router({
       path:'/order_confirm',
       component:OrderConfirm,
     },{
+      name:'pay',
+      path:'/pay',
+      component:Pay,
+    },
+    {
       name:'goods',
       path:'/goods',
       component:Goods

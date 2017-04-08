@@ -1,19 +1,17 @@
 <template lang="html">
   <div class="order content">
-    <sticky class="order-sticky" v-if="false">
+    <sticky class="order-sticky">
       <tab active-color="#1ABC9C" v-model="index">
         <tab-item :selected="actived===item" v-for="(item,index) in list">{{item}}
         </tab-item>
       </tab>
     </sticky>
-    <swiper v-model="index" :show-dots="false" class="tab-swiper-content" height="100%">
-      <swiper-item v-for="(item,index) in list" class="order-swiper">
-        <div class="tab-swiper vux-center">
-          <card-order :data_order="item_order" v-for="(item_order,index_order) in order_list" class="margin-b-10">
+    <div>
+      <div v-if="index==0" v-for="(item,index) in list" class="order-swiper tab-content">
+          <card-order :data_order="item_order" :order_id="index_order" v-for="(item_order,index_order) in order_list" class="margin-b-10">
           </card-order>
-        </div>
-      </swiper-item>
-    </swiper>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -29,8 +27,8 @@ export default {
       },
       index:0,
       actived:"待付款",
-      // list:["待付款","待发货","待收货","待收货","售后"],
-      list:["待付款"],
+      list:["待付款","待发货","待收货","待收货","售后"],
+     // list:["待付款"],
       order_list:{
           170108173832356:[
             {
@@ -45,13 +43,16 @@ export default {
               price:'1422.00',
               mktprice:'1690.00',
               product_id:'15745',
-              s_url:'static/grentech/201611071753107968.jpg',
+              s_url:'static/goods/product_002.jpg',
               ship_addr:'大浪',
               ship_area:'北京/北京市/东城区',
               ship_name:'吴燕平',
+              ship_fee:'0',
               ship_status:"0",
+              ship_mobile:'1850300XXXX',
               // spec_info:'颜色：白色、尺码：42',
               total_amount:'1422.00',
+              pay_time:'1477390510'
             },
             {
               order_id:'170108173832357',
@@ -65,13 +66,17 @@ export default {
               price:'1422.00',
               mktprice:'1690.00',
               product_id:'15745',
-              s_url:'static/grentech/201611051243571562.jpg',
+
+              s_url:'static/goods/product_003.jpg',
               ship_addr:'大浪',
+              ship_mobile:'1850300XXXX',
               ship_area:'北京/北京市/东城区',
               ship_name:'吴燕平',
               ship_status:"0",
+              ship_fee:'0',
               // spec_info:'颜色：白色、尺码：42',
               total_amount:'1422.00',
+              pay_time:'1477390310'
             }
           ],
           170108173832357:[
@@ -87,13 +92,16 @@ export default {
               price:'1422.00',
               mktprice:'1690.00',
               product_id:'15745',
-              s_url:'static/grentech/201611221355144218.jpg',
+              s_url:'static/goods/product_002.jpg',
               ship_addr:'大浪',
+              ship_mobile:'1850300XXXX',
               ship_area:'北京/北京市/东城区',
               ship_name:'吴燕平',
               ship_status:"0",
+              ship_fee:'0',
               // spec_info:'颜色：白色、尺码：42',
               total_amount:'1422.00',
+              pay_time:'1477390310'
             }
           ]
        }
@@ -114,17 +122,15 @@ export default {
 </script>
 
 <style lang="less">
-.order{
-  height: 100%;
-}
-.order-sticky{
-  z-index:9999;
-}
-.order .vux-swiper{
-  height: auto;
-  overflow: inherit;
-}
-  .tab-swiper-content{
+  .order{
     height: 100%;
+  }
+  .order-sticky{
+    z-index:9999;
+  }
+
+  .tab-content{
+    height: 100%;
+    padding-bottom:4.5rem;
   }
 </style>

@@ -81,6 +81,14 @@
             navbar_active:2,
             hide_tabbar:true,
           },
+          'pay':{
+            title:'订单支付',
+            is_show:true,
+            show_back:false,
+            show_search_bar:false,
+            navbar_active:2,
+            hide_tabbar:true,
+          },
           'goods': {
             title: '商品详情',
             show_back: false,
@@ -116,6 +124,7 @@
             is_show: false,
             show_search_bar: false,
             navbar_active: 2,
+            hide_tabbar:true,
           },
           'vchart': {
             title: '我的报表',

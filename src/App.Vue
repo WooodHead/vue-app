@@ -126,12 +126,12 @@ import api from './api'
       xheader_handler: function (route) {
         var header_conf = this.handler_xheader(route.name);
         this.header_conf = header_conf;
-      }
+      },
     },
     created: function () {
       this.init_app();
       var self=this;
-     
+      
     },
     watch: {
       $route: 'fetch_data'

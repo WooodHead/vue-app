@@ -16,13 +16,13 @@
         </swiper-item>
       </swiper>
       <flexbox :gutter="0" wrap="nowrap" class="bg-white">
-        <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="9">
+        <flexbox-item class="padding-tb-6 padding-l-10 border-box" :span="12">
           <p class="line-ellispse-2">{{goods_data.data[0].name}}</p>
           <p class="color-dark">bn: {{goods_data.data[0].bn}}</p>
           <p class="color-danger font-2x">¥{{goods_data.data[0].price}}</p>
           <p class="color-dark">市场价:<s>¥{{goods_data.data[0].mktprice||'暂无'}}</s></p>
         </flexbox-item>
-        <flexbox-item :span="3" class="link-img padding-rl-6 border-box">
+        <flexbox-item :span="3" class="link-img padding-rl-6 border-box" v-if="false">
           <vue-q-art v-if="false" :config="config" class="qrcode-content"></vue-q-art>
         </flexbox-item>
       </flexbox>
@@ -107,12 +107,26 @@
             <tabbar-item class="bg-primary">
               <span slot="label" class="color-white">加入购物车</span>
             </tabbar-item>
-             <tabbar-item class="bg-danger" v-if="false">
+             <tabbar-item class="bg-danger">
               <span slot="label" class="color-white">立即购买</span>
             </tabbar-item>
         </tabbar>
       </div>
     </popup>
+    <tabbar class="bar bar-secondary">
+       <tabbar-item class="bg-white">
+        <flexbox slot="label" class="text-center color-dark" :gutter="0">
+          <flexbox-item class="vertical-flex border-1px-r"><span class="iconfont">&#xe61e;</span><span>收藏</span></flexbox-item>
+          <flexbox-item class="vertical-flex"><span class="iconfont">&#xe67b;</span><span>购物车</span></flexbox-item>
+        </flexbox>
+      </tabbar-item>
+      <tabbar-item class="bg-primary">
+         <span slot="label" class="color-white">加入购物车</span>
+      </tabbar-item>
+          <tabbar-item class="bg-danger">
+              <span slot="label" class="color-white">立即购买</span>
+          </tabbar-item>
+    </tabbar>
   </div>
 
 </template>
@@ -134,8 +148,8 @@ import api from '../api/index.js'
         index: 0,
         goods_id: 0,
         item_index: 0,
-        //Root:window.location.host!="mall.yingerfashion.com"?"http://mall.yingerfashion.com/":'/',
-        Root:'/',
+        Root:window.location.host!="mall.yingerfashion.com"?"http://mall.yingerfashion.com/":'/',
+        // Root:'/',
         page_goods_data: {},
         current_page: 0,
         temp_data:{},
@@ -340,7 +354,7 @@ import api from '../api/index.js'
                   "ident": "/fe/66/46/62349ab12b9079582f9e726c66de7784ee439be0.jpg",
                   "url": "public/images/fe/66/46/62349ab12b9079582f9e726c66de7784ee439be0.jpg",
                   "l_ident": "/69/a5/3a/1843a06a3f0329fcfd357c8477a8c2490b984532.jpg",
-                  "l_url": "static/grentech/201611071753107968.jpg",
+                  "l_url": "/public/images/48/e7/ae/eb8d53850ad1356b746aa2d1ffc0cade279185ac.jpg",
                   "m_ident": "/de/b4/be/ec8ed0acb01951f25ca53fe2243aa2d09f559122.jpg",
                   "m_url": "public/images/de/b4/be/ec8ed0acb01951f25ca53fe2243aa2d09f559122.jpg",
                   "s_ident": "/03/71/16/dada49da46a64f0d5fae4495a943477d0818a360.jpg",
@@ -356,7 +370,7 @@ import api from '../api/index.js'
                   "goods_id": "10239",
                   "jooge_goods_id": "JOKZT22748867953",
                   "bn": "9097120130",
-                  "name": "基站定向双极化固定下倾角天线(小型化）",
+                  "name": "测试商品测试商品测试商品测试商品测试商品(小型化）",
                   "price": "1431.00",
                   "type_id": "2",
                   "cat_id": "6",
@@ -738,6 +752,9 @@ import api from '../api/index.js'
 </script>
 
 <style lang="css">
+  #app .goods .bar-secondary{
+    bottom:0;
+  }
   .page-goods .content {
     background-color: #f7f7f7;
   }
@@ -771,6 +788,6 @@ import api from '../api/index.js'
   box-shadow:0 0 10px #E53935;
 }
 .weui-cell__ft{
-  width:100%;
+  //  width:100%;
 }
 </style>

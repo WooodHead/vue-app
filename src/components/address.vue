@@ -2,7 +2,7 @@
   <div class="address content">
   <div class="content-box">
   <swipeout>
-      <swipeout-item v-for="(item,index) in address_list" transition-mode="follow" :right-menu-width="80" class="padding-rl-10 bg-white border-1px-b">
+      <swipeout-item v-for="(item,index) in address_list" transition-mode="follow" :right-menu-width="80" class="padding-rl-10 padding-tb-10 bg-white border-1px-b">
         <div slot="right-menu">
           <swipeout-button type="warn">
             删除
@@ -21,7 +21,7 @@
                   <p>{{item.ship_name}}</p>
                   <p>{{item.ship_mobile}}</p>
                   <p>{{item.ship_area.join(" ")}}</p>
-                  <p>{{item.ship_addr}}</p>
+                  <p v-if="false">{{item.ship_addr}}</p>
                 </flexbox-item>
               </flexbox>
             </flexbox-item>
@@ -36,7 +36,7 @@
       <x-button plain>添加地址</x-button>
     </div>
   </div>
-    <popup v-model="popup_address" height="70%" :hide-on-blur="true">
+    <popup v-model="popup_address" height="50%" :hide-on-blur="true">
       <div class="padding-rl-10"><span @click="edit_address" class="iconfont text-center circle pull-right popup-close-btn font-2x bg-danger color-white">&#xe606;</span></div>
         <group class="edit_address_content" title="修改地址">
           <x-input title="姓名" class="font-normal" :value="address_data.ship_name" placeholder="收件人姓名" :show-clear="false"></x-input>
@@ -44,14 +44,22 @@
           <x-input title="电话" class="font-normal" :value="address_data.ship_tel" placeholder="可选" :show-clear="false"></x-input>
           <x-input title="邮编" class="font-normal" :value="address_data.ship_zip" placeholder="可选" :show-clear="false"></x-input>
           <x-address title="区域" class="font-normal" placeholder="请选择地址" raw-value v-model="address_data.ship_area" :list="addressData"></x-address>
-          <x-input title="详细地址" class="font-normal" :value="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
+          <x-input title="详细地址" v-if="false" class="font-normal" :value="address_data.ship_addr" placeholder="详细地址" :show-clear="false"></x-input>
         </group>
+        <tabbar class="bar bar-secondary">
+          <tabbar-item class="bg-danger">
+            <span slot="label" class="color-white">取消</span>
+          </tabbar-item>
+          <tabbar-item class="bg-success">
+            <span slot="label" class="color-white">保存</span>
+          </tabbar-item>
+        </tabbar>
     </popup>
   </div>
 </template>
 
 <script>
-import {Swipeout,Flexbox,FlexboxItem,SwipeoutItem,SwipeoutButton,XButton,Popup,Group,Cell,XInput,XAddress,ChinaAddressData} from 'vux'
+import {Swipeout,Flexbox,FlexboxItem,SwipeoutItem,SwipeoutButton,XButton,Popup,Group,Cell,XInput,XAddress,ChinaAddressData,Tabbar,TabbarItem} from 'vux'
 export default {
   name:'address',
   data:function(){
@@ -69,26 +77,26 @@ export default {
       },
       address_list:[
         {
-          ship_name:'吴燕平',
-          ship_mobile:'15817464830',
-          zip:'233609',
+          ship_name:'吴XX',
+          ship_mobile:'1581746XXXX',
+          zip:'123456',
           ship_tel:'',
           ship_area:['广东省', '深圳市', '南山区'],
-          ship_addr:'天丰路113号',
+          ship_addr:'测试路113号',
         },{
-          ship_name:'王小明',
-          ship_mobile:'15817464830',
+          ship_name:'王XX',
+          ship_mobile:'1581746XXXX',
           ship_tel:'',
-          zip:'233609',
+          zip:'123456',
           ship_area:['广东省', '深圳市', '南山区'],
-          ship_addr:'天丰路113号',
+          ship_addr:'测试路113号',
         },{
-          ship_name:'彭勃',
-          ship_mobile:'15817464830',
+          ship_name:'张三',
+          ship_mobile:'1581746XXXX',
           ship_tel:'',
-          zip:'233609',
+          zip:'123456',
           ship_area:['广东省', '深圳市', '南山区'],
-          ship_addr:'天丰路113号',
+          ship_addr:'测试路113号',
         }
       ]
     }
@@ -114,7 +122,9 @@ export default {
     Cell,
     XInput,
     XAddress,
-    ChinaAddressData
+    ChinaAddressData,
+    Tabbar,
+    TabbarItem
   }
 }
 </script>
@@ -138,5 +148,8 @@ export default {
 }
 .edit_address_content .weui-cells{
   width:100%;
+}
+#app .bar-secondary{
+  bottom:1px;
 }
 </style>

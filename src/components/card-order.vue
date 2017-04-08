@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="card-order border-1px-b">
     <div class="card-header padding-rl-10 padding-tb-6">
-      订单:170108173832357
+      订单:{{order_id}}
     </div>
     <div class="card-content border-1px-t">
       <flexbox :gutter="0" wrap='nowrap'class="padding-tb-10" v-for="(item1,index1) in data_order">
@@ -22,7 +22,7 @@
              {{item1.spec_info2}}
           </div>
           <div class="item-subtitle color-danger">
-            数量:×{{item1.ordernum}}
+            数量: ×{{item1.ordernum}}
           </div>
         </flexbox-item>
       </flexbox>
@@ -32,15 +32,16 @@
       <span class="pull-right iconfont color-primary" @click.prevent="collapse_change">&#xe772;</span>
     </div>
     <div class="card-second-footer padding-rl-10 padding-tb-6 border-1px-t color-dark" v-if="collapse_footer">
-      <p><label>订单: </label>170108173832357</p>
-      <p><label>收件人: </label>王XX</p>
-      <p><label>联系方式: </label>1850300XXXX</p>
-      <p v-if="false"><label>地址: </label>广东省 深圳市 福田区 XX 街道 XX 号</p>
-      <p v-if="false"><label>运费 </label> ¥0.00</p>
-      <p><label>创建时间: </label>2017-02-19 23:57:20</p>
+      <p><label>订单: </label>{{order_id}}</p>
+      <p><label>收件人: </label>{{data_order[0].ship_name}}</p>
+      <p><label>联系方式: </label>{{data_order[0].ship_mobile}}</p>
+      <p v-if="false"><label>地址: </label>{{data_order[0].ship_area}}</p>
+      <p v-if="false"><label>运费 </label> ¥{{data_order[0].ship_fee}}</p>
+      <p><label>创建时间: </label>{{data_order[0].createtime|date('y-m-d h:m:s')}}</p>
       <p v-if="false"><label>支付方式: </label>微信支付</p>
       <p><label>当前状态: </label><span class="color-danger">已审核</span></p>
-      <p><label>处理时间: </label>2017-02-19 23:57:20</p>
+      <p><label>处理时间: </label>{{data_order[0].createtime|date('y-m-d h:m:s')}}</p>
+      <p><label>支付时间: </label>{{data_order[0].pay_time|date('y-m-d h:m:s')}}</p>
     </div>
   </div>
 </template>
@@ -72,7 +73,8 @@ export default {
   props:{
     data_order:{
       type:Array
-    }
+    },
+    order_id:String
   }
 }
 </script>

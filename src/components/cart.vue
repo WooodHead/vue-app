@@ -50,26 +50,22 @@ export default {
           name:"1800+FAD双频天线",
           spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
           spec_info1:'增益:11.5/11.5/12/13 dBi',
-          spec_info2:'电下倾:0/0/0 °',
-          s_url:'/static/grentech/201611071753107968.jpg'
+          s_url:'/static/goods/product_001.jpg'
         },{
           name:"基站大下倾宽频FAD电调智能天线",
           spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
           spec_info1:'增益:11.5/11.5/12/13 dBi',
-          spec_info2:'电下倾:0/0/0 °',
-          s_url:'/static/grentech/201611221355144218.jpg'
+          s_url:'/static/goods/product_001.jpg'
         },{
           name:"街道站低增益超宽频双通道（小型化)",
           spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
           spec_info1:'增益:11.5/11.5/12/13 dBi',
-          spec_info2:'电下倾:0/0/0 °',
-          s_url:'/static/grentech/201611071844501875.jpg'
+          s_url:'/static/goods/product_002.jpg'
         },{
           name:"基站定向双极化固定下倾角天线(小型化）",
           spec_info:'频段:1710~1920/1920~2170/2200~2500/2500~2690',
           spec_info1:'增益:11.5/11.5/12/13 dBi',
-          spec_info2:'电下倾:0/0/0 °',
-          s_url:'/static/grentech/201611051243571562.jpg'
+          s_url:'/static/goods/product_003.jpg'
         }
       ]
     }

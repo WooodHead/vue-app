@@ -2,7 +2,8 @@ let formate=(value)=>{
   return value>=10?value:'0'+value;
 }
 export const dateFilter=(time,type)=>{
-  time==time.length==10?time*10:time;
+  // console.log(time*1000);
+  time=time.length==10?time*1000:time;
   let date=new Date(time);
   let year=date.getFullYear();
   let month=date.getMonth()+1;
@@ -10,6 +11,14 @@ export const dateFilter=(time,type)=>{
   let hours=date.getHours();
   let minutes=date.getMinutes();
   let seconds=date.getSeconds();
+  console.log({
+    year:year,
+    month:month,
+    day:day,
+    hours:hours,
+    minutes:minutes,
+    seconds:seconds
+  });
   let result={};
   var config={
     'y-m':`${formate(year)}-${formate(month)}`,
@@ -21,5 +30,6 @@ export const dateFilter=(time,type)=>{
     'h:m:s':`${formate(hours)}:${formate(minutes)}:${formate(minutes)}`,
     'h:m':`${formate(hours)}:${formate(minutes)}`
   }
+ 
   return config[type];
 }

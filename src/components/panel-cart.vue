@@ -13,9 +13,6 @@
       <div class="item-subtitle padding-rl-10 font-bold line-ellispse-2">
         {{cart_data.spec_info1}}
       </div>
-      <div class="item-subtitle padding-rl-10 font-bold line-ellispse-2">
-        {{cart_data.spec_info2}}
-      </div>
       <div class="item-subtitle">
         <x-number :title="quantity" :min="1" :value="1" class="padding-rl-10 padding-tb-6 font-normal" width="40px">
         </x-number>
