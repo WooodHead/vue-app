@@ -8,7 +8,7 @@
         <span class="iconfont color-primary font-3x pull-right">&#xe616;</span>
       </router-link>
     </div>
-    
+
     <div style="height:100%">
       <swiper style="width:100%;margin:0 auto;" :aspect-ratio="375/375" dots-position="center">
         <swiper-item v-for="(item,index) in goods_data.data" class="link-img">
@@ -66,7 +66,7 @@
         </div>
       </div>
       <group>
-        <cell class="padding-tb-10">  
+        <cell class="padding-tb-10">
           <flexbox :gutter="6" wrap="nowrap">
               <flexbox-item :span="3" class="link-img"><img :src="Root+goods_data.data[0].m_url" alt=""></flexbox-item>
               <flexbox-item :span="9">
@@ -667,13 +667,13 @@ import api from '../api/index.js'
             var product_data=self.product_data.data;
             var goods_data=self.goods_data.data;
             self.handle_goods_data(product_data,goods_data);
-           
+
           // });
       },
       handle_goods_data:function(product_data,goods_data){
         var self=this;
         // console.log(data);
-        
+
         console.log(product_data);
         console.log(goods_data);
         var size_arr={};
@@ -703,7 +703,7 @@ import api from '../api/index.js'
         setTimeout(function(){
           self.show_previewer();
         },2000)
-      },  
+      },
       show_previewer:function(){
         var self=this;
         console.log($(".goods-desc img"));
@@ -729,7 +729,7 @@ import api from '../api/index.js'
         this.popup_show=!this.popup_show;
       }
     },
-   
+
     components: {
       Swiper,
       Flexbox,
@@ -758,13 +758,13 @@ import api from '../api/index.js'
   .page-goods .content {
     background-color: #f7f7f7;
   }
-  
+
   .goods-content-swiper {
     height: 100%;
     padding-bottom: 2rem;
     box-sizing: border-box;
   }
-  
+
   .goods-content-swiper>.vux-swiper {
     height: 100%!important;
     overflow-y: scroll;

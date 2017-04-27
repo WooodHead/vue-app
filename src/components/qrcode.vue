@@ -1,34 +1,30 @@
 <template lang="html">
   <div class="myqrcode content">
     <div class="content-box">
-      <div class="card-qrcode bg-white">
-        <div class="bg-dark color-white text-center font-2x card-qrcode-header">个人名片</div>
-        <div class="border-1px-b text-center">
-           <flexbox :gutter="0" class="text-center btn-80 block-center font-2x padding-tb-20">
-            <flexbox-item v-for="(item,index) in name">{{item}}</flexbox-item>
-          </flexbox>
-        </div>
-        <div class="border-1px-b text-center">
-          <div class="padding-10">
-            <p class="color-gray">职位</p>
-            <p>开发工程师</p>
+      <div class="card-qrcode bg-white border-radius-5">
+        <div class="color-white text-center card-qrcode-header">
+          <p class="padding-tb-20 font-2x">
+           <span class="padding-rl-4" v-for="(item,index) in name">{{item}}</span>
+          </p>
+          <div class="user-logo link-img circle block-center"> 
+             <img :src="config.avatar" alt="">
           </div>
           <div class="padding-10">
-            <p class="color-gray">联系方式</p>
-            <p>18503009595</p>
+            <p>职位</p>
+            <p>XXXX</p>
+          </div>
+          <div class="padding-10">
+            <p>联系方式</p>
+            <p>1850300XXXX</p>
           </div>
         </div>
          <div class="text-center">
            <vue-q-art :config="config" class="qrcode-content"></vue-q-art>
-            <div>创建时间</div>
-            <div>03.20.2017</div>
          </div>
          <div class="text-center brand-footer">
-          <p>&copy;XX 有限公司</p>
+          <p>&copy;{{brand}}</p>
          </div>
-        
       </div>
-     
     </div>
   </div>
 </template>
@@ -41,11 +37,12 @@ export default {
   name:'qrcode',
   data:function(){
     return {
-       name:'王小明',
+       name:'张三',
+       brand:'国人天线',
        config: {
-          
           value: 'http://119.23.22.185/app',
-          imagePath: '/static/slice/girl_avatar.jpg',
+          avatar: '/static/slice/girl_avatar.jpg',
+          imagePath: '/static/icons/bg-white.jpg',
           filter: 'color'
         },
     }
@@ -86,22 +83,35 @@ export default {
   width:7rem;
   height:7rem;
 }
-.qrcode-content button{
-  display:none;
-}
+
 .card-qrcode{
   height:90%;
   position:absolute;
   top:5%;
   width:90%;
   left:5%;
+  overflow:hidden;
+  box-shadow:3px 3px 10px #444;
 }
 .card-qrcode-header{
-  padding:20px 0;
+  // padding:20px 0;
+  height:57%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f75154+0,f0a66d+100 */
+  background: #f75154; /* Old browsers */
+  background: -moz-linear-gradient(45deg,  #f75154 0%, #f0a66d 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg,  #f75154 0%,#f0a66d 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(45deg,  #f75154 0%,#f0a66d 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f75154', endColorstr='#f0a66d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 }
 .brand-footer{
   position:absolute;
   bottom:1rem;
   width:100%;
+}
+.user-logo{
+  width:4rem;
+  height:4rem;
+  box-shadow:0 0  10px #f0a66d;
 }
 </style>
